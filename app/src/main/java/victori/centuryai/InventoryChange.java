@@ -17,9 +17,4 @@ public class InventoryChange extends Inventory {
 	public int getTotal() {
 		throw new UnsupportedOperationException();
 	}
-
-	@Override
-	public String toTerseNotation() {
-		throw new UnsupportedOperationException();
-	}
 }
