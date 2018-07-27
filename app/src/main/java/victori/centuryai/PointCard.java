@@ -44,4 +44,17 @@ public class PointCard {
 	public boolean pointsAgreeWithValue() {
 		return points == goal.getValue();
 	}
+
+	/**
+	 * Imports cards in the following notation:
+	 *p21p4110
+	 * @param notation
+	 * @return
+	 */
+	public static PointCard factory(String notation) {
+		char cardType = notation.charAt(0);
+		String[] split = notation.split("p");
+
+		return new PointCard(Integer.valueOf(split[0]), Inventory.importTerseInventory(split[1]));
+	}
 }
