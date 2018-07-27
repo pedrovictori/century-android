@@ -1,3 +1,5 @@
+package victori.centuryai;
+
 public class TradeCard extends AbstractMerchantCard{
 	private final Inventory input;
 	private final Inventory output;

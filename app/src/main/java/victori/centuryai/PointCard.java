@@ -1,3 +1,5 @@
+package victori.centuryai;
+
 public class PointCard {
 	private boolean hasGoldCoin = false;
 	private boolean hasSilverCoin = false;

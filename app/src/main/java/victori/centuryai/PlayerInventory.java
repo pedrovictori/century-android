@@ -1,3 +1,5 @@
+package victori.centuryai;
+
 public class PlayerInventory extends Inventory {
 
 

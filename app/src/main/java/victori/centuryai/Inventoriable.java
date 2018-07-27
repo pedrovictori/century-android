@@ -1,3 +1,5 @@
+package victori.centuryai;
+
 public interface Inventoriable {
 	public int getB();
 

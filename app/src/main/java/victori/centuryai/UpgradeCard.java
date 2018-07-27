@@ -1,3 +1,5 @@
+package victori.centuryai;
+
 import java.util.Arrays;
 
 public class UpgradeCard extends AbstractMerchantCard {

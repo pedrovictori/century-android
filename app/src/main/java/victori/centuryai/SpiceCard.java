@@ -1,3 +1,5 @@
+package victori.centuryai;
+
 public class SpiceCard extends AbstractMerchantCard {
 	private InventoryChange change;
 

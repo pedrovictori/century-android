@@ -1,3 +1,5 @@
+package victori.centuryai;
+
 public class MerchantCardFactory {
 
 	private MerchantCardFactory() { }

@@ -1,3 +1,5 @@
+package victori.centuryai;
+
 public class InventoryChange extends Inventory {
 	public InventoryChange(int b, int g, int r, int y) {
 		super(b, g, r, y);

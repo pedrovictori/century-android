@@ -1,3 +1,5 @@
+package victori.centuryai;
+
 public interface MerchantCard {
 	InventoryChange getChange(Inventory inventory);
 

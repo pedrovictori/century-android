@@ -1,3 +1,5 @@
+package victori.centuryai;
+
 public abstract class AbstractMerchantCard implements MerchantCard {
 	private Inventory inventory = new Inventory();
 
