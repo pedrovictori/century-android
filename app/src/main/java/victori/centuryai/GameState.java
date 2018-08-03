@@ -7,7 +7,9 @@ public class GameState {
 	private int goldCoinsLeft;
 	private int silverCoinsLeft;
 	private int playerCount;
-	private int currentTurn;
+	private int aiCount;
+	private int totalCount;
+	private int currentTurn = 0;
 	private List<PointCard> pointRow;
 	private List<MerchantCard> merchantRow;
 	private List<Player> players = new ArrayList<>();
@@ -20,15 +22,20 @@ public class GameState {
 		startingInventories.add(4, new PlayerInventory(0,0,1,3));
 	}
 
-	public GameState(List<PointCard> pointRow, List<MerchantCard> merchantRow, int playerCount) {
+	public GameState(List<PointCard> pointRow, List<MerchantCard> merchantRow, int playerCount, int aiCount) {
 		this.pointRow = pointRow;
 		this.merchantRow = merchantRow;
 		this.playerCount = playerCount;
+		this.aiCount = aiCount;
+		totalCount = playerCount + aiCount;
+		if (totalCount > 5) {
+			throw new IllegalArgumentException("Total count can't be larger than 5");
+		}
 
-		goldCoinsLeft = 2 * playerCount;
+		goldCoinsLeft = 2 * totalCount;
 		silverCoinsLeft = goldCoinsLeft;
 
-		for (int i = 0; i < playerCount; i++) {
+		for (int i = 0; i < totalCount; i++) {
 			Player newPlayer = new Player(startingInventories.get(i), i);
 			players.add(newPlayer);
 		}
@@ -61,6 +68,14 @@ public class GameState {
 		return playerCount;
 	}
 
+	public int getAiCount() {
+		return aiCount;
+	}
+
+	public int getTotalCount() {
+		return totalCount;
+	}
+
 	public int getCurrentTurn() {
 		return currentTurn;
 	}
@@ -79,6 +94,6 @@ public class GameState {
 
 	private void nextTurn() {
 		currentTurn++;
-		if(currentTurn == playerCount) currentTurn = 0;
+		if(currentTurn == totalCount) currentTurn = 0;
 	}
 }
