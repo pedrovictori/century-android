@@ -2,4 +2,5 @@
     <string name="app_name">Century AI</string>
     <string name="action_settings">Settings</string>
     <string name="startText">Welcome. To start a new game, input \'start\'</string>
+    <string name="enter_a_command">Enter a command</string>
 </resources>

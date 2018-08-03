@@ -58,6 +58,7 @@ public class Hub {
     private State currentState = State.WAITING_TO_START;
 
     public String interpretLine(String line) {
+        line = line.toLowerCase().trim();
         if (currentState.hasStarted()) {
             if (line.equals(help)) {
                 return helpText;
@@ -125,7 +126,7 @@ public class Hub {
                 }catch (NumberFormatException nfe) {
                     return errorFormat;
                 }
-                if (startMerchantCards.size() == 5) {
+                if (startMerchantCards.size() == 6) {
                     currentState = State.STARTED;
                     gameState = new GameState(startPointCards, startMerchantCards, numberPlayers, numberAI);
 
