@@ -38,12 +38,14 @@ public class MainActivity extends AppCompatActivity {
         final TextView tvMain = (TextView) findViewById(R.id.tvMain);
         final EditText etInput = (EditText) findViewById(R.id.etInput);
         Button bEnter = (Button) findViewById(R.id.bEnter);
+        final Hub hub = new Hub();
 
         bEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String newLine = etInput.getText().toString();
-                tvMain.setText(addToLog(newLine));
+                String response = hub.interpretLine(newLine);
+                tvMain.setText(addToLog(response));
             }
         });
     }
