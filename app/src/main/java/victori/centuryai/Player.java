@@ -57,4 +57,9 @@ public class Player {
 	public int getTurnOrder() {
 		return turnOrder;
 	}
+
+	public void rest(){
+		hand.addAll(playedCards);
+		playedCards.clear();
+	}
 }
