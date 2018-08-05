@@ -8,27 +8,27 @@ import java.util.List;
  */
 public class Hub {
     //COMMANDS
-    private String start = "start";
-    private String help = "h";
-    private String rest = "rest";
-    private String acquire = "acquire";
-    private String play = "play";
-    private String claim = "claim";
+    private static final String start = "start";
+    private static final String help = "h";
+    private static final String rest = "rest";
+    private static final String acquire = "acquire";
+    private static final String play = "play";
+    private static final String claim = "claim";
 
     //ANSWERS
-    private String inputNumberPlayers = "Please input how many human and AI players are going to be playing, in the format \"3,1\"";
-    private String errorPlayerCount = "The maximum total number of players is five";
-    private String inputStarterPointCards = "Please input the five point cards from left to right, one per line, in the format \"p21p4110\"";
-    private String errorFormat = "Please use the right format";
-    private String waitingCards = "Received. Waiting for more cards";
-    private String inputStarterMerchantCards = "Please input the six merchant cards from left to right, one per line, in the formats \"s0012\", \"u2\" or \"t1000=0022\"";
-    private String startDone = "All done, thank you. To continue, input the move (type \"h\" for a list of commands) of Player ";
-    private String helpText = "Possible player moves:\n" +
-            "\"rest\"" +
-            "\"acquire\", followed by the index of the merchant card acquired, and the new card that enters at the end of the row, in the formats \"s0012\", \"u2\" or \"t1000=0022\"\n" +
-            "\"play\", followed by the index of the merchant card played, and the new card that enters at the end of the row, in the formats \"s0012\", \"u2\" or \"t1000=0022\"\n" +
-            "\"claim\", followed by the index of the point card claimed.\n";
-    private String errorCommand = "Command not recognised. Try again.";
+    private static final String inputNumberPlayers = "Please input how many human and AI players are going to be playing, in the format \"3,1\"";
+    private static final String errorPlayerCount = "The maximum total number of players is five";
+    private static final String inputStarterPointCards = "Please input the five point cards from left to right, one per line, in the format \"p21p4110\"";
+    private static final String errorFormat = "Please use the right format";
+    private static final String waitingCards = "Received. Waiting for more cards";
+    private static final String inputStarterMerchantCards = "Please input the six merchant cards from left to right, one per line, in the formats \"s0012\", \"u2\" or \"t1000=0022\"";
+    private static final String startDone = "All done, thank you. To continue, input the move (type \"h\" for a list of commands) of Player ";
+    private static final String helpText = "Possible player moves:\n" +
+            "\"rest\"\n" +
+            "\"acquire\", followed by the index of the merchant card acquired, the cubes spent in the format \"yyyr\" (if no cubes spent, leave blank), and the new card that enters at the end of the row, in the formats \"s0012\", \"u2\" or \"t1000=0022\"\n" +
+            "\"play\", followed by the card played, in the formats \"s0012\", \"u2\" or \"t1000=0022\"\n. In the case of a trade card, include the number of iterations afterwards (or leave blank for 1). In the case of a upgrade card, include the cubes you want to upgrade, in the format 0011" +
+            "\"claim\", followed by the index of the point card claimed and the new card that enters the row in the format \"p21p4110\".\n";
+    private static final String errorCommand = "Command not recognised. Try again.";
 
     //STARTER STUFF
     List<PointCard> startPointCards = new ArrayList<>();
