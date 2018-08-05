@@ -1,5 +1,7 @@
 package victori.centuryai;
 
+import java.util.Objects;
+
 public class TradeCard extends AbstractMerchantCard{
 	private final Inventory input;
 	private final Inventory output;
@@ -10,23 +12,14 @@ public class TradeCard extends AbstractMerchantCard{
 	}
 
 	/**
-	 * Computes the maximum number of outputs that can be created. See getChange(PlayerInventory inventory, int iterations) for a more complete method.
+	 * Computes one iteration. See getChange(PlayerInventory inventory, int iterations) for a more complete method.
 	 * @param inventory the current player's inventory
-	 * @return an InventoryChange with the number of inputs to be detracted and outputs to be added
+	 * @return an InventoryChange with the input to be detracted and output to be added
 	 */
 	@Override
 	public InventoryChange getChange(Inventory inventory) {
-		PlayerInventory pInv = (PlayerInventory) inventory;
-		int maxIt = getMaxIterations(pInv);
-		Inventory thisInput = new Inventory(input);
-		thisInput.multiplyInventory(- maxIt); //negative because these quantities need to be removed from player's inventory
-		Inventory thisOutput = new Inventory(output);
-		thisOutput.multiplyInventory(maxIt);
-
-		InventoryChange change = new InventoryChange(thisInput);
-		change.addInventory(output);
-
-		return change;
+		PlayerInventory playerInventory = (PlayerInventory) inventory;
+		return getChange(playerInventory, 1);
 	}
 
 	public InventoryChange getChange(PlayerInventory inventory, int iterations) {
@@ -45,7 +38,7 @@ public class TradeCard extends AbstractMerchantCard{
 		}
 	}
 
-	public int getMaxIterations(PlayerInventory inventory) {
+	private int getMaxIterations(PlayerInventory inventory) {
 		int minIt = 100;
 		for (int i = 0; i < 4; i++) {
 			int s = input.getAt(i);
