@@ -1,5 +1,7 @@
 package victori.centuryai;
 
+import java.util.Objects;
+
 public class Inventory implements Inventoriable {
     private int b;
     private int g;
@@ -77,11 +79,13 @@ public class Inventory implements Inventoriable {
     }
 
 
-    public void multiplyInventory(int times) {
+    public Inventory multiplyInventory(int times) {
         b *= times;
         g *= times;
         r *= times;
         y *= times;
+
+        return this;
     }
 
     public void addInventory(Inventory inventory) {
@@ -93,6 +97,38 @@ public class Inventory implements Inventoriable {
 
     public int getTotal() {
         return getB() + getG() + getR() + getY();
+    }
+
+    public void changeY(int change) {
+        y += change;
+    }
+
+    public void changeR(int change) {
+        r += change;
+    }
+
+    public void changeG(int change) {
+       g += change;
+    }
+
+    public void changeB(int change) {
+        b += change;
+    }
+
+    /**
+     *
+     * @param inventory
+     * @return true if all elements of inventory are present in this inventory, false otherwise
+     */
+    public boolean contains(Inventory inventory) {
+        int[] container = getArray();
+        int[] contained = inventory.getArray();
+
+        for (int i = 0; i < 4; i++) {
+            if(container[i] < contained [i]) return false;
+        }
+
+        return true;
     }
 
     @Override
@@ -116,7 +152,7 @@ public class Inventory implements Inventoriable {
      * @param notation
      * @return
      */
-    public static Inventory importInventory(String notation) {
+    public static Inventory verbose(String notation) {
 
         int bPos = 0;
         int gPos = notation.indexOf('g', bPos + 2);
@@ -141,7 +177,7 @@ public class Inventory implements Inventoriable {
      * @param notation
      * @return
      */
-    public static Inventory importTerseInventory(String notation) {
+    public static Inventory terse(String notation) {
         int[] inv = new int[4];
         for (int i = 0, j = 0; i < notation.length(); i++) {
             char c = notation.charAt(i);
@@ -171,5 +207,16 @@ public class Inventory implements Inventoriable {
         value += getR() * 2;
         value += getY() * 1;
         return value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null) return false;
+        Inventory inventory = (Inventory) o;
+        return getB() == inventory.getB() &&
+                getG() == inventory.getG() &&
+                getR() == inventory.getR() &&
+                getY() == inventory.getY();
     }
 }
