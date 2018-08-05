@@ -1,6 +1,7 @@
 package victori.centuryai;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class UpgradeCard extends AbstractMerchantCard {
 	private int upgrades;
@@ -20,7 +21,7 @@ public class UpgradeCard extends AbstractMerchantCard {
 	 * ej with 1: 0001 = 1000
 	 * But there is a case that can go two ways:
 	 * 0011 = 0200 or 1010
-	 * The output wanted will be coded into the b space. So to get 0200, one needs to supply 0011, and to get 1010, one needs to supply 1011.
+	 * But is assumed that 0011 = 0200, since 1010 is actually the same than (u3 0001) + 0010 = u3 0011
 	 *
 	 * @param inventory the spices to be upgrades, not a whole PlayerInventory
 	 * @return
@@ -63,10 +64,7 @@ public class UpgradeCard extends AbstractMerchantCard {
 
 					//special case
 				else if (c.equals("0011")) change = new InventoryChange(0, 2, 0, 0);
-				else if (c.equals("1011")) change = new InventoryChange(1, 0, 1, 0);
 			}
-
-
 		}
 
 		return change;
