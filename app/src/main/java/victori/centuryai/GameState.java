@@ -35,7 +35,7 @@ public class GameState {
 		goldCoinsLeft = 2 * totalCount;
 		silverCoinsLeft = goldCoinsLeft;
 
-		for (int i = 0; i < totalCount; i++) {
+		for (int i = 1; i <= totalCount; i++) {
 			Player newPlayer = new Player(startingInventories.get(i), i);
 			players.add(newPlayer);
 		}
@@ -90,6 +90,10 @@ public class GameState {
 
 	public List<Player> getPlayers() {
 		return players;
+	}
+
+	public Player getCurrentPlayer() {
+		return players.get(currentTurn);
 	}
 
 	private void nextTurn() {
