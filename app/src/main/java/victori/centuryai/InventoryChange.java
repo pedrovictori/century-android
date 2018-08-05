@@ -17,4 +17,10 @@ public class InventoryChange extends Inventory {
 	public int getTotal() {
 		throw new UnsupportedOperationException();
 	}
+
+	@Override
+	public InventoryChange multiplyInventory(int times) {
+		super.multiplyInventory(times);
+		return this;
+	}
 }
