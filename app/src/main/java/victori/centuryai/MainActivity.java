@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,14 +38,32 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String newLine = etInput.getText().toString();
-                etInput.getText().clear();
-                tvMain.append("\n" + newLine);
-                String response = hub.interpretLine(newLine);
-                tvMain.append("\n> " + response);
+                manage_input(etInput, tvMain, hub);
+            }
+        });
+
+        etInput.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // If the event is a key-down event on the "enter" button
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    // Perform action on key press
+                    manage_input(etInput, tvMain, hub);
+                    return true;
+                }
+                return false;
             }
         });
     }
+
+    private void manage_input(EditText etInput, TextView tvMain, Hub hub) {
+        String newLine = etInput.getText().toString();
+        etInput.getText().clear();
+        tvMain.append("\n" + newLine);
+        String response = hub.interpretLine(newLine);
+        tvMain.append("\n> " + response);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
