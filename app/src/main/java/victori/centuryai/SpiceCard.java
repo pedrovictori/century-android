@@ -1,5 +1,7 @@
 package victori.centuryai;
 
+import java.util.Objects;
+
 public class SpiceCard extends AbstractMerchantCard {
 	private InventoryChange change;
 
@@ -15,5 +17,13 @@ public class SpiceCard extends AbstractMerchantCard {
 	@Override
 	public InventoryChange getChange(Inventory inventory) {
 		return change;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		SpiceCard spiceCard = (SpiceCard) o;
+		return change.equals(spiceCard.change);
 	}
 }

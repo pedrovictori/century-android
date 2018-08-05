@@ -71,4 +71,12 @@ public class UpgradeCard extends AbstractMerchantCard {
 
 		return change;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		UpgradeCard upgradeCard = (UpgradeCard) o;
+		return upgrades == upgradeCard.upgrades;
+	}
 }

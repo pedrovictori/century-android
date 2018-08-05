@@ -59,4 +59,13 @@ public class TradeCard extends AbstractMerchantCard{
 
 		return minIt;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		TradeCard tradeCard = (TradeCard) o;
+		return input.equals(tradeCard.input) &&
+				output.equals(tradeCard.output);
+	}
 }
