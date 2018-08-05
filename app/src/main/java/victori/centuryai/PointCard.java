@@ -60,6 +60,6 @@ public class PointCard {
         String[] split = notation.split("p");
         split = notation.substring(1).split("p");
         Log.d("import of point card", "points: " + split[0] + ", goal: " + split[1]);
-        return new PointCard(Integer.valueOf(split[0]), Inventory.importTerseInventory(split[1]));
+        return new PointCard(Integer.valueOf(split[0]), Inventory.terse(split[1]));
     }
 }
