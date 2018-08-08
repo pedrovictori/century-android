@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import century_core.Hub;
+
 public class MainActivity extends AppCompatActivity {
     String log = "";
 

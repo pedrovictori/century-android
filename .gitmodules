@@ -1,0 +1,3 @@
+[submodule "app/src/main/java/century_core"]
+	path = app/src/main/java/century_core
+	url = https://github.com/pedrovictori/century-core
